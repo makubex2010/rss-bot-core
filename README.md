@@ -19,7 +19,7 @@
 
 ## 安裝與使用
 
-詳細安裝與使用方法請查閱項目[使用文檔](https://flowerss-bot.now.sh/)。
+詳細安裝與使用方法請查閱項目[使用文檔](https://github.com/makubex2010/RSS-BOT)。
 
 使用命令：
 
