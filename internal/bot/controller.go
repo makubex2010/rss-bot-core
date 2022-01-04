@@ -107,7 +107,7 @@ func toggleCtrlButtons(c *tb.Callback, action string) {
 func startCmdCtr(m *tb.Message) {
 	user, _ := model.FindOrCreateUserByTelegramID(m.Chat.ID)
 	zap.S().Infof("/start user_id: %d telegram_id: %d", user.ID, user.TelegramID)
-	_, _ = B.Send(m.Chat, fmt.Sprintf("你好，歡迎使用flowerss。"))
+	_, _ = B.Send(m.Chat, fmt.Sprintf("你好，我是無料案內所，專門抓取RSS。"))
 }
 
 func subCmdCtr(m *tb.Message) {
@@ -118,7 +118,7 @@ func subCmdCtr(m *tb.Message) {
 		if url != "" {
 			registFeed(m.Chat, url)
 		} else {
-			_, err := B.Send(m.Chat, "請回复RSS URL", &tb.ReplyMarkup{ForceReply: true})
+			_, err := B.Send(m.Chat, "請回覆RSS URL", &tb.ReplyMarkup{ForceReply: true})
 			if err == nil {
 				UserState[m.Chat.ID] = fsm.Sub
 			}
