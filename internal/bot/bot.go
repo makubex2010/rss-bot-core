@@ -69,25 +69,15 @@ func Start() {
 func setCommands() {
 	// 設置bot命令提示信息
 	commands := []tb.Command{
-		{Text: "start", Description: "開始使用"},
 		{Text: "sub", Description: "訂閱rss源"},
 		{Text: "list", Description: "當前訂閱的rss源"},
 		{Text: "unsub", Description: "退訂rss源"},
-		{Text: "unsuball", Description: "退訂所有rss源"},
 
 		{Text: "set", Description: "設置rss訂閱"},
-		{Text: "setfeedtag", Description: "設置rss訂閱標籤"},
-		{Text: "setinterval", Description: "設置rss訂閱抓取間隔"},
-
-		{Text: "export", Description: "導出訂閱為opml文件"},
-		{Text: "import", Description: "從opml文件導入訂閱"},
 
 		{Text: "check", Description: "檢查我的rss訂閱狀態"},
-		{Text: "pauseall", Description: "停止抓取訂閱更新"},
-		{Text: "activeall", Description: "開啟抓取訂閱更新"},
 
 		{Text: "help", Description: "使用幫助"},
-		{Text: "version", Description: "bot版本"},
 	}
 
 	zap.S().Debugf("set bot command %+v", commands)
