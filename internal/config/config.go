@@ -75,7 +75,7 @@ const (
 {{.PreviewText}}
 -----------------------------
 {{- end}}{{if .EnableTelegraph}}
-<a href="{{.TelegraphURL}}">【預覽】</a><a href="{{.RawLink}}">{{.ContentTitle}}</a>
+<a href="{{.TelegraphURL}}">【預覽】</a>⭐<a href="{{.RawLink}}">{{.ContentTitle}}</a>
 {{- else }}
 <a href="{{.RawLink}}">{{.ContentTitle}}</a>
 {{- end }}
@@ -86,9 +86,9 @@ const (
 {{.PreviewText}}
 -----------------------------
 {{- end}}{{if .EnableTelegraph}}
-<a href="{{.TelegraphURL}}">【預覽】</a><a href="{{.RawLink}}">{{.ContentTitle}}</a>
+<a href="{{.TelegraphURL}}">【預覽】</a>⭐<a href="{{.RawLink}}">{{.ContentTitle}}</a>
 {{- else }}
-[{{.ContentTitle}}]({{.RawLink}})
+<a href="{{.RawLink}}">{{.ContentTitle}}</a>
 {{- end }}
 {{.Tags}}
 `
