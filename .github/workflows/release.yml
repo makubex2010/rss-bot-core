@@ -13,8 +13,8 @@ jobs:
         goos: [ linux ]
         goarch: [amd64]
 
-    with:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+        with:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     
     steps:
       - uses: actions/checkout@v2
