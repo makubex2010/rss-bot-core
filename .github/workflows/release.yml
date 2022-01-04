@@ -13,12 +13,10 @@ jobs:
         goos: [ linux ]
         goarch: [amd64]
 
-        with:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-    
-    steps:
-      - uses: actions/checkout@v2
 
+        steps:
+      - uses: actions/checkout@v2
+      - with: ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       - name: Set APP_VERSION env
         run: echo ::set-env name=APP_VERSION::$(echo ${GITHUB_REF} | rev | cut -d'/' -f 1 | rev )
       - name: Set BUILD_TIME env
