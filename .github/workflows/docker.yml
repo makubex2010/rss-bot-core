@@ -23,7 +23,7 @@ jobs:
         id: prepare
         run: |
           DOCKER_IMAGE=makubex2020/flowerss-bot
-          DOCKER_PLATFORMS=linux/amd64
+          DOCKER_PLATFORMS=linux/amd64,linux/386
           VERSION=latest
 
           if [[ $GITHUB_REF == refs/tags/* ]]; then
