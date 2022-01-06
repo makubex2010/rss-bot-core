@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/makubex2010/flowerss-bot/workflows/Release/badge.svg)](https://github.com/makubex2010/flowerss-bot/actions?query=workflow%3ARelease)
 [![Test Status](https://github.com/makubex2010/flowerss-bot/workflows/Test/badge.svg)](https://github.com/makubex2010/flowerss-bot/actions?query=workflow%3ATest)
-[![Build Docker Image](https://github.com/makubex2010//flowerss-bot/workflows/Build%20Docker%20Image/badge.svg)]
+[![Build Docker Image](https://github.com/makubex2010//flowerss-bot/workflows/Build%20Docker%20Image/badge.svg)](https://github.com/makubex2010/flowerss-bot/actions?query=workflow%3Adocker)
 [![Go Report Card](https://goreportcard.com/badge/github.com/makubex2010/flowerss-bot)](https://goreportcard.com/report/github.com/makubex2010/flowerss-bot)
 [![GitHub](https://img.shields.io/github/license/makubex2010/flowerss-bot.svg)](https://github.com/makubex2010)
 
