@@ -1,4 +1,4 @@
-# 無料案內所RSS-BOT
+# RSS-BOT
 
 [![Build Status](https://github.com/makubex2010/flowerss-bot/workflows/Release/badge.svg)](https://github.com/makubex2010/flowerss-bot/actions?query=workflow%3ARelease)
 [![Test Status](https://github.com/makubex2010/flowerss-bot/workflows/Test/badge.svg)](https://github.com/makubex2010/flowerss-bot/actions?query=workflow%3ATest)
