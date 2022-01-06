@@ -4,7 +4,7 @@
 [![Test Status](https://github.com/makubex2010/flowerss-bot/workflows/Test/badge.svg)](https://github.com/makubex2010/flowerss-bot/actions?query=workflow%3ATest)
 [![Build Docker Image](https://github.com/makubex2010//flowerss-bot/workflows/Build%20Docker%20Image/badge.svg)](https://github.com/makubex2010/flowerss-bot/actions?query=workflow%3Adocker)
 [![Go Report Card](https://goreportcard.com/badge/github.com/makubex2010/flowerss-bot)](https://goreportcard.com/report/github.com/makubex2010/flowerss-bot)
-[![GitHub](https://img.shields.io/github/license/makubex2010/flowerss-bot.svg)](https://github.com/makubex2010)
+[![GitHub](https://img.shields.io/github/license/makubex2010/flowerss-bot.svg)](https://github.com/makubex2010/flowerss-bot/blob/master/LICENSE)
 
 [安裝與使用文檔](https://github.com/makubex2010/RSS-BOT)  
 
