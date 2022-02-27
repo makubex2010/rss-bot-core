@@ -16,26 +16,26 @@ func (h *Help) Command() string {
 }
 
 func (h *Help) Description() string {
-	return "帮助"
+	return "幫助"
 }
 
 func (h *Help) Handle(ctx tb.Context) error {
 	message := `
 	命令：
-	/sub 订阅源
-	/unsub  取消订阅
-	/list 查看当前订阅源
-	/set 设置订阅
-	/check 检查当前订阅
-	/setfeedtag 设置订阅标签
-	/setinterval 设置订阅刷新频率
-	/activeall 开启所有订阅
-	/pauseall 暂停所有订阅
-	/help 帮助
-	/import 导入 OPML 文件
-	/export 导出 OPML 文件
-	/unsuball 取消所有订阅
-	详细使用方法请看：https://github.com/indes/flowerss-bot
+	/sub 訂閱源
+	/unsub  取消訂閱
+	/list 查看當前訂閱源
+	/set 設置訂閱
+	/check 檢查當前訂閱
+	/setfeedtag 設置訂閱標籤
+	/setinterval 設置訂閱刷新頻率
+	/activeall 開啟所有訂閱
+	/pauseall 暫停所有訂閱
+	/help 幫助
+	/import 導入 OPML 文件
+	/export 匯出 OPML 文件
+	/unsuball 取消所有訂閱
+	詳細使用方法請看：https://github.com/makubex2010/rss-bot-core
 	`
 	return ctx.Send(message)
 }
