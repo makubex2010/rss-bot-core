@@ -31,18 +31,18 @@ func (o *OnDocument) Description() string {
 
 func (o *OnDocument) getOPML(ctx tb.Context) (*opml.OPML, error) {
 	if !strings.HasSuffix(ctx.Message().Document.FileName, ".opml") {
-		return nil, errors.New("请发送正确的 OPML 文件")
+		return nil, errors.New("請發送正確的 OPML 檔")
 	}
 
 	fileRead, err := o.bot.File(&ctx.Message().Document.File)
 	if err != nil {
-		return nil, errors.New("获取文件失败")
+		return nil, errors.New("獲取檔失敗")
 	}
 
 	opmlFile, err := opml.ReadOPML(fileRead)
 	if err != nil {
 		zap.S().Errorf("parser opml failed, %v", err)
-		return nil, errors.New("获取文件失败")
+		return nil, errors.New("獲取檔失敗")
 	}
 	return opmlFile, nil
 }
@@ -76,9 +76,9 @@ func (o *OnDocument) Handle(ctx tb.Context) error {
 		successImportList = append(successImportList, outline)
 	}
 
-	importReport := fmt.Sprintf("<b>导入成功：%d，导入失败：%d</b>", len(successImportList), len(failImportList))
+	importReport := fmt.Sprintf("<b>導入成功：%d，導入失敗：%d</b>", len(successImportList), len(failImportList))
 	if len(successImportList) != 0 {
-		successReport := "\n\n<b>以下订阅源导入成功:</b>"
+		successReport := "\n\n<b>以下訂閱源導入成功:</b>"
 		for i, line := range successImportList {
 			if line.Text != "" {
 				successReport += fmt.Sprintf("\n[%d] <a href=\"%s\">%s</a>", i+1, line.XMLURL, line.Text)
@@ -90,7 +90,7 @@ func (o *OnDocument) Handle(ctx tb.Context) error {
 	}
 
 	if len(failImportList) != 0 {
-		failReport := "\n\n<b>以下订阅源导入失败:</b>"
+		failReport := "\n\n<b>以下訂閱源導入失敗:</b>"
 		for i, line := range failImportList {
 			if line.Text != "" {
 				failReport += fmt.Sprintf("\n[%d] <a href=\"%s\">%s</a>", i+1, line.XMLURL, line.Text)
@@ -110,3 +110,4 @@ func (o *OnDocument) Handle(ctx tb.Context) error {
 func (o *OnDocument) Middlewares() []tb.MiddlewareFunc {
 	return nil
 }
+
