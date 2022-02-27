@@ -23,7 +23,7 @@ func (s *SetFeedTag) Command() string {
 }
 
 func (s *SetFeedTag) Description() string {
-	return "设置rss订阅标签"
+	return "設置rss訂閱標籤"
 }
 
 func (s *SetFeedTag) getMessageWithoutMention(ctx tb.Context) string {
@@ -38,21 +38,21 @@ func (s *SetFeedTag) Handle(ctx tb.Context) error {
 	msg := s.getMessageWithoutMention(ctx)
 	args := strings.Split(strings.TrimSpace(msg), " ")
 	if len(args) < 1 {
-		return ctx.Reply("/setfeedtag [sub id] [tag1] [tag2] 设置订阅标签（最多设置三个Tag，以空格分割）")
+		return ctx.Reply("/setfeedtag [sub id] [tag1] [tag2] 設置訂閱標籤（最多設置三個Tag，以空格分割）")
 	}
 
-	// 截短参数
+	// 截短參數
 	if len(args) > 4 {
 		args = args[:4]
 	}
 	subID, err := strconv.Atoi(args[0])
 	if err != nil {
-		return ctx.Reply("请输入正确的订阅id!")
+		return ctx.Reply("請輸入正確的訂閱id!")
 	}
 
 	sub, err := model.GetSubscribeByID(subID)
 	if err != nil || sub == nil {
-		return ctx.Reply("请输入正确的订阅id!")
+		return ctx.Reply("請輸入正確的訂閱id!")
 	}
 
 	mentionChat, _ := session.GetMentionChatFromCtxStore(ctx)
@@ -62,14 +62,14 @@ func (s *SetFeedTag) Handle(ctx tb.Context) error {
 	}
 
 	if subscribeUserID != sub.UserID {
-		return ctx.Reply("订阅记录与操作者id不一致")
+		return ctx.Reply("訂閱記錄與操作者id不一致")
 	}
 
 	if err := sub.SetTag(args[1:]); err != nil {
-		return ctx.Reply("订阅标签设置失败!")
+		return ctx.Reply("訂閱標籤設置失敗!")
 
 	}
-	return ctx.Reply("订阅标签设置成功!")
+	return ctx.Reply("訂閱標籤設置成功!")
 }
 
 func (s *SetFeedTag) Middlewares() []tb.MiddlewareFunc {
