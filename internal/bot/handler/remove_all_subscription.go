@@ -20,17 +20,17 @@ func (r RemoveAllSubscription) Command() string {
 }
 
 func (r RemoveAllSubscription) Description() string {
-	return "取消所有订阅"
+	return "取消所有訂閱"
 }
 
 func (r RemoveAllSubscription) Handle(ctx tb.Context) error {
-	reply := "是否退订当前用户的所有订阅？"
+	reply := "是否退訂當前用戶的所有訂閱？"
 	var confirmKeys [][]tb.InlineButton
 	confirmKeys = append(
 		confirmKeys, []tb.InlineButton{
 			tb.InlineButton{
 				Unique: UnSubAllButtonUnique,
-				Text:   "确认",
+				Text:   "確認",
 			},
 			tb.InlineButton{
 				Unique: CancelUnSubAllButtonUnique,
@@ -68,9 +68,9 @@ func (r *RemoveAllSubscriptionButton) Description() string {
 func (r *RemoveAllSubscriptionButton) Handle(ctx tb.Context) error {
 	success, fail, err := model.UnsubAllByUserID(ctx.Sender().ID)
 	if err != nil {
-		return ctx.Edit("退订失败")
+		return ctx.Edit("退訂失敗")
 	}
-	return ctx.Edit(fmt.Sprintf("退订成功：%d\n退订失败：%d", success, fail))
+	return ctx.Edit(fmt.Sprintf("退訂成功：%d\n退訂失敗：%d", success, fail))
 }
 
 func (r *RemoveAllSubscriptionButton) Middlewares() []tb.MiddlewareFunc {
