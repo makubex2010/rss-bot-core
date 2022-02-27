@@ -23,7 +23,7 @@ var (
 	TelegraphAuthorName  string = "flowerss-bot"
 	TelegraphAuthorURL   string
 
-	// EnableTelegraph 是否启用telegraph
+	// EnableTelegraph 是否啟用telegraph
 	EnableTelegraph       bool = false
 	PreviewText           int  = 0
 	DisableWebPagePreview bool = false
@@ -31,10 +31,10 @@ var (
 	SQLitePath            string
 	EnableMysql           bool = false
 
-	// UpdateInterval rss抓取间隔
+	// UpdateInterval rss抓取間隔
 	UpdateInterval int = 10
 
-	// ErrorThreshold rss源抓取错误阈值
+	// ErrorThreshold rss源抓取錯誤閾值
 	ErrorThreshold uint = 100
 
 	// MessageTpl rss更新推送模版
@@ -43,19 +43,19 @@ var (
 	// MessageMode telegram消息渲染模式
 	MessageMode tb.ParseMode
 
-	// TelegramEndpoint telegram bot 服务器地址，默认为空
+	// TelegramEndpoint telegram bot 伺服器地址，默認為空
 	TelegramEndpoint string = tb.DefaultApiURL
 
 	// UserAgent User-Agent
 	UserAgent string
 
-	// RunMode 运行模式 Release / Debug
+	// RunMode 運行模式 Release / Debug
 	RunMode RunType = ReleaseMode
 
-	// AllowUsers 允许使用bot的用户
+	// AllowUsers 允許使用bot的用戶
 	AllowUsers []int64
 
-	// DBLogMode 是否打印数据库日志
+	// DBLogMode 是否列印資料庫日誌
 	DBLogMode bool = false
 )
 
