@@ -34,7 +34,7 @@ func (b *SetSubscriptionTagButton) Description() string {
 func (b *SetSubscriptionTagButton) feedSetAuth(c *tb.Callback) bool {
 	data := strings.Split(c.Data, ":")
 	subscriberID, _ := strconv.ParseInt(data[0], 10, 64)
-	// 如果订阅者与按钮点击者id不一致，需要验证管理员权限
+	// 如果訂閱者與按鈕點擊者id不一致，需要驗證管理員許可權
 	if subscriberID != c.Sender.ID {
 		channelChat, err := b.bot.ChatByID(subscriberID)
 		if err != nil {
@@ -50,9 +50,9 @@ func (b *SetSubscriptionTagButton) feedSetAuth(c *tb.Callback) bool {
 
 func (b *SetSubscriptionTagButton) Handle(ctx tb.Context) error {
 	c := ctx.Callback()
-	// 权限验证
+	// 許可權驗證
 	if !b.feedSetAuth(c) {
-		return ctx.Send("无权限")
+		return ctx.Send("無許可權")
 	}
 	data := strings.Split(c.Data, ":")
 	ownID, _ := strconv.Atoi(data[0])
@@ -60,11 +60,11 @@ func (b *SetSubscriptionTagButton) Handle(ctx tb.Context) error {
 
 	sub, err := model.GetSubscribeByUserIDAndSourceID(int64(ownID), uint(sourceID))
 	if err != nil {
-		return ctx.Send("系统错误，代码04")
+		return ctx.Send("系統錯誤，代碼04")
 	}
 	msg := fmt.Sprintf(
-		"请使用`/setfeedtag %d tags`命令为该订阅设置标签，tags为需要设置的标签，以空格分隔。（最多设置三个标签） \n"+
-			"例如：`/setfeedtag %d 科技 苹果`",
+		"請使用`/setfeedtag %d tags`命令為該訂閱設置標籤，tags為需要設置的標籤，以空格分隔。（最多設置三個標籤） \n"+
+			"例如：`/setfeedtag %d 科技 蘋果`",
 		sub.ID, sub.ID,
 	)
 	return ctx.Edit(msg, &tb.SendOptions{ParseMode: tb.ModeMarkdown})
@@ -73,3 +73,4 @@ func (b *SetSubscriptionTagButton) Handle(ctx tb.Context) error {
 func (b *SetSubscriptionTagButton) Middlewares() []tb.MiddlewareFunc {
 	return nil
 }
+
