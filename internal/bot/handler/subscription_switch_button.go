@@ -42,7 +42,7 @@ func (b *SubscriptionSwitchButton) Handle(ctx tb.Context) error {
 	data := strings.Split(c.Data, ":")
 	subscriberID, _ := strconv.ParseInt(data[0], 10, 64)
 	if subscriberID != c.Sender.ID {
-		// 如果订阅者与按钮点击者id不一致，需要验证管理员权限
+		// 如果訂閱者與按鈕點擊者id不一致，需要驗證管理員許可權
 		channelChat, err := b.bot.ChatByID(subscriberID)
 		if err != nil {
 			return ctx.Respond(&tb.CallbackResponse{Text: "error"})
