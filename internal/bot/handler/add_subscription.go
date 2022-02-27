@@ -23,11 +23,11 @@ func (a *AddSubscription) Command() string {
 }
 
 func (a *AddSubscription) Description() string {
-	return "订阅RSS源"
+	return "訂閱RSS源"
 }
 
 func (a *AddSubscription) getMessageURL() string {
-	return "订阅RSS源"
+	return "訂閱RSS源"
 }
 
 func (a *AddSubscription) addSubscriptionForChat(ctx tb.Context) error {
