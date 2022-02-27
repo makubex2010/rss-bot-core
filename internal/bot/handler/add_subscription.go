@@ -33,24 +33,24 @@ func (a *AddSubscription) getMessageURL() string {
 func (a *AddSubscription) addSubscriptionForChat(ctx tb.Context) error {
 	sourceURL := message.URLFromMessage(ctx.Message())
 	if sourceURL == "" {
-		// 未附带链接，使用
-		hint := fmt.Sprintf("请在命令后带上需要订阅的RSS URL，例如：%s https://justinpot.com/feed/", a.Command())
+		// 未附帶連結，使用
+		hint := fmt.Sprintf("請在命令後帶上需要訂閱的RSS URL，例如：%s https://justinpot.com/feed/", a.Command())
 		return ctx.Send(hint, &tb.SendOptions{ReplyTo: ctx.Message()})
 	}
 
 	sourceURL = model.ProcessWechatURL(sourceURL)
 	source, err := model.FindOrNewSourceByUrl(sourceURL)
 	if err != nil {
-		return ctx.Reply(fmt.Sprintf("%s，订阅失败", err))
+		return ctx.Reply(fmt.Sprintf("%s，訂閱失敗", err))
 	}
 
 	zap.S().Infof("%d subscribe [%d]%s %s", ctx.Chat().ID, source.ID, source.Title, source.Link)
 	if err := model.RegistFeed(ctx.Chat().ID, source.ID); err != nil {
-		return ctx.Reply(fmt.Sprintf("%s，订阅失败", err))
+		return ctx.Reply(fmt.Sprintf("%s，訂閱失敗", err))
 	}
 
 	return ctx.Reply(
-		fmt.Sprintf("[[%d]][%s](%s) 订阅成功", source.ID, source.Title, source.Link),
+		fmt.Sprintf("[[%d]][%s](%s) 訂閱成功", source.ID, source.Title, source.Link),
 		&tb.SendOptions{
 			DisableWebPagePreview: true,
 			ParseMode:             tb.ModeMarkdown,
@@ -64,7 +64,7 @@ func (a *AddSubscription) hasChannelPrivilege(bot *tb.Bot, channelChat *tb.Chat,
 	adminList, err := bot.AdminsOf(channelChat)
 	if err != nil {
 		zap.S().Error(err)
-		return false, errors.New("获取频道信息失败")
+		return false, errors.New("獲取頻道信息失敗")
 	}
 
 	senderIsAdmin := false
@@ -84,16 +84,16 @@ func (a *AddSubscription) hasChannelPrivilege(bot *tb.Bot, channelChat *tb.Chat,
 func (a *AddSubscription) addSubscriptionForChannel(ctx tb.Context, channelName string) error {
 	sourceURL := message.URLFromMessage(ctx.Message())
 	if sourceURL == "" {
-		return ctx.Send("频道订阅请使用' /sub @ChannelID URL ' 命令")
+		return ctx.Send("頻道訂閱請使用' /sub @ChannelID URL ' 命令")
 	}
 
 	bot := ctx.Bot()
 	channelChat, err := bot.ChatByUsername(channelName)
 	if err != nil {
-		return ctx.Reply("获取频道信息失败")
+		return ctx.Reply("獲取頻道信息失敗")
 	}
 	if channelChat.Type != tb.ChatChannel {
-		return ctx.Reply("您或Bot不是频道管理员，无法设置订阅")
+		return ctx.Reply("您或Bot不是頻道管理員，無法設置訂閱")
 	}
 
 	hasPrivilege, err := a.hasChannelPrivilege(bot, channelChat, ctx.Sender().ID, bot.Me.ID)
@@ -101,22 +101,22 @@ func (a *AddSubscription) addSubscriptionForChannel(ctx tb.Context, channelName 
 		return ctx.Reply(err.Error())
 	}
 	if !hasPrivilege {
-		return ctx.Reply("您或Bot不是频道管理员，无法设置订阅")
+		return ctx.Reply("您或Bot不是頻道管理員，無法設置訂閱")
 	}
 
 	sourceURL = model.ProcessWechatURL(sourceURL)
 	source, err := model.FindOrNewSourceByUrl(sourceURL)
 	if err != nil {
-		return ctx.Reply(fmt.Sprintf("%s，订阅失败", err))
+		return ctx.Reply(fmt.Sprintf("%s，訂閱失敗", err))
 	}
 
 	zap.S().Infof("%d subscribe [%d]%s %s", channelChat.ID, source.ID, source.Title, source.Link)
 	if err := model.RegistFeed(channelChat.ID, source.ID); err != nil {
-		return ctx.Reply(fmt.Sprintf("%s，订阅失败", err))
+		return ctx.Reply(fmt.Sprintf("%s，訂閱失敗", err))
 	}
 
 	return ctx.Reply(
-		fmt.Sprintf("[[%d]] [%s](%s) 订阅成功", source.ID, source.Title, source.Link),
+		fmt.Sprintf("[[%d]] [%s](%s) 訂閱成功", source.ID, source.Title, source.Link),
 		&tb.SendOptions{
 			DisableWebPagePreview: true,
 			ParseMode:             tb.ModeMarkdown,
