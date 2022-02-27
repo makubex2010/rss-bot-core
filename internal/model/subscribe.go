@@ -47,7 +47,7 @@ func GetSubscribeByUserIDAndSourceID(userID int64, sourceID uint) (*Subscribe, e
 	var sub Subscribe
 	db.Where("user_id=? and source_id=?", userID, sourceID).First(&sub)
 	if sub.UserID != int64(userID) {
-		return nil, errors.New("未订阅该RSS源")
+		return nil, errors.New("未訂閱該RSS源")
 	}
 	return &sub, nil
 }
@@ -60,7 +60,7 @@ func GetSubscribeByUserIDAndURL(userID int, url string) (*Subscribe, error) {
 	}
 	db.Where("user_id=? and source_id=?", userID, source.ID).First(&sub)
 	if sub.UserID != int64(userID) {
-		return nil, errors.New("未订阅该RSS源")
+		return nil, errors.New("未訂閱該RSS源")
 	}
 	return &sub, nil
 }
@@ -84,7 +84,7 @@ func UnsubByUserIDAndSource(userID int64, source *Source) error {
 	var sub Subscribe
 	db.Where("user_id=? and source_id=?", userID, source.ID).First(&sub)
 	if sub.UserID != userID {
-		return errors.New("未订阅该RSS源")
+		return errors.New("未訂閱該RSS源")
 	}
 	db.Delete(&sub)
 	if source.GetSubscribeNum() < 1 {
@@ -98,7 +98,7 @@ func UnsubByUserIDAndSubID(userID int64, subID uint) error {
 	db.Where("id=?", subID).First(&sub)
 
 	if sub.UserID != userID {
-		return errors.New("未找到该条订阅")
+		return errors.New("未找到該條訂閱")
 	}
 	db.Delete(&sub)
 
