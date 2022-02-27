@@ -21,7 +21,7 @@ func (p *PauseAll) Command() string {
 }
 
 func (p *PauseAll) Description() string {
-	return "停止抓取所有订阅更新"
+	return "停止抓取所有訂閱更新"
 }
 
 func (p *PauseAll) Handle(ctx tb.Context) error {
@@ -37,12 +37,12 @@ func (p *PauseAll) Handle(ctx tb.Context) error {
 	}
 
 	if err := model.PauseSourcesByUserID(subscribeUserID); err != nil {
-		return ctx.Reply("暂停失败")
+		return ctx.Reply("暫停失敗")
 	}
 
-	reply := "订阅已全部暂停"
+	reply := "訂閱已全部暫停"
 	if channelChat != nil {
-		reply = fmt.Sprintf("频道 [%s](https://t.me/%s) 订阅已全部暂停", channelChat.Title, channelChat.Username)
+		reply = fmt.Sprintf("頻道 [%s](https://t.me/%s) 訂閱已全部暫停", channelChat.Title, channelChat.Username)
 	}
 	return ctx.Send(reply, &tb.SendOptions{
 		DisableWebPagePreview: true,
