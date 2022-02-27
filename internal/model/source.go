@@ -31,7 +31,7 @@ func (s *Source) appendContents(items []*rss.Item) error {
 		c, _ := getContentByFeedItem(s, item)
 		s.Content = append(s.Content, c)
 	}
-	// 开启task更新
+	// 開啟task更新
 	s.ErrorCount = 0
 	db.Save(&s)
 	return nil
@@ -90,7 +90,7 @@ func FindOrNewSourceByUrl(url string) (*Source, error) {
 			feed, err := rss.FetchByFunc(fetchFunc, url)
 
 			if err != nil {
-				return nil, fmt.Errorf("Feed 抓取错误 %v", err)
+				return nil, fmt.Errorf("Feed 抓取錯誤 %v", err)
 			}
 
 			source.Title = feed.Title
@@ -148,7 +148,7 @@ func (s *Source) NeedUpdate() bool {
 	}
 }
 
-// GetNewContents 获取rss新内容
+// GetNewContents 獲取rss新內容
 func (s *Source) GetNewContents() ([]*Content, error) {
 	zap.S().Debugw("fetch source updates",
 		"source", s,
