@@ -23,7 +23,7 @@ func (s *SetUpdateInterval) Command() string {
 }
 
 func (s *SetUpdateInterval) Description() string {
-	return "设置订阅刷新频率"
+	return "設置訂閱刷新頻率"
 }
 
 func (s *SetUpdateInterval) getMessageWithoutMention(ctx tb.Context) string {
@@ -38,12 +38,12 @@ func (s *SetUpdateInterval) Handle(ctx tb.Context) error {
 	msg := s.getMessageWithoutMention(ctx)
 	args := strings.Split(strings.TrimSpace(msg), " ")
 	if len(args) < 2 {
-		return ctx.Reply("/setinterval [interval] [sub id] 设置订阅刷新频率（可设置多个sub id，以空格分割）")
+		return ctx.Reply("/setinterval [interval] [sub id] 設置訂閱刷新頻率（可設置多個sub id，以空格分割）")
 	}
 
 	interval, err := strconv.Atoi(args[0])
 	if interval <= 0 || err != nil {
-		return ctx.Reply("请输入正确的抓取频率")
+		return ctx.Reply("請輸入正確的抓取頻率")
 	}
 
 	subscribeUserID := ctx.Message().Chat.ID
@@ -54,21 +54,21 @@ func (s *SetUpdateInterval) Handle(ctx tb.Context) error {
 	for _, id := range args[1:] {
 		subID, err := strconv.Atoi(id)
 		if err != nil {
-			return ctx.Reply("请输入正确的订阅id!")
+			return ctx.Reply("請輸入正確的訂閱id!")
 		}
 
 		sub, err := model.GetSubscribeByID(subID)
 		if err != nil || sub == nil {
-			return ctx.Reply("请输入正确的订阅id!")
+			return ctx.Reply("請輸入正確的訂閱id!")
 		}
 
 		if sub.UserID != subscribeUserID {
-			return ctx.Reply("订阅id与订阅者id不匹配!")
+			return ctx.Reply("訂閱id與訂閱者id不匹配!")
 		}
 
 		_ = sub.SetInterval(interval)
 	}
-	return ctx.Reply("抓取频率设置成功!")
+	return ctx.Reply("抓取頻率設置成功!")
 }
 
 func (s *SetUpdateInterval) Middlewares() []tb.MiddlewareFunc {
