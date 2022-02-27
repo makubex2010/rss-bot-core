@@ -28,3 +28,4 @@ func (c *Version) Handle(ctx tb.Context) error {
 func (c *Version) Middlewares() []tb.MiddlewareFunc {
 	return nil
 }
+
