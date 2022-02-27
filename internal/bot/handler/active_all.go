@@ -20,7 +20,7 @@ func (a *ActiveAll) Command() string {
 }
 
 func (a *ActiveAll) Description() string {
-	return "开启抓取订阅更新"
+	return "開啟抓取訂閱更新"
 }
 
 func (a *ActiveAll) Handle(ctx tb.Context) error {
@@ -31,12 +31,12 @@ func (a *ActiveAll) Handle(ctx tb.Context) error {
 	}
 
 	if err := model.ActiveSourcesByUserID(subscribeUserID); err != nil {
-		return ctx.Reply("激活失败")
+		return ctx.Reply("開啟失败")
 	}
 
-	reply := "订阅已全部开启"
+	reply := "訂閱已全部開啟"
 	if mentionChat != nil {
-		reply = fmt.Sprintf("频道 [%s](https://t.me/%s) 订阅已全部开启", mentionChat.Title, mentionChat.Username)
+		reply = fmt.Sprintf("頻道 [%s](https://t.me/%s) 訂閱已全部開啟", mentionChat.Title, mentionChat.Username)
 	}
 
 	return ctx.Reply(reply, &tb.SendOptions{
