@@ -20,7 +20,7 @@ var (
 	Socks5               string
 	TelegraphToken       []string
 	TelegraphAccountName string
-	TelegraphAuthorName  string = "flowerss-bot"
+	TelegraphAuthorName  string = "rss-bot-core"
 	TelegraphAuthorURL   string
 
 	// EnableTelegraph 是否啟用telegraph
