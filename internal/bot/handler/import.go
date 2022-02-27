@@ -14,11 +14,11 @@ func (i *Import) Command() string {
 }
 
 func (i *Import) Description() string {
-	return "导入OPML文件"
+	return "導入OPML文件"
 }
 
 func (i *Import) Handle(ctx tb.Context) error {
-	reply := "请直接发送OPML文件，如果需要为频道导入OPML，请在发送文件的时候附上channel id，例如@telegram"
+	reply := "請直接發送OPML檔，如果需要為頻道導入OPML，請在發送檔的時候附上channel id，例如@telegram"
 	return ctx.Reply(reply)
 }
 
