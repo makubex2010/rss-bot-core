@@ -13,7 +13,7 @@ import (
 
 //SendError send error user
 func SendError(c *tb.Chat) {
-	_, _ = B.Send(c, "请输入正确的指令！")
+	_, _ = B.Send(c, "請輸入正確的指令！")
 }
 
 //BroadcastNews send new contents message to subscriber
@@ -92,7 +92,7 @@ func BroadcastSourceError(source *model.Source) {
 	subs := model.GetSubscriberBySource(source)
 	var u tb.User
 	for _, sub := range subs {
-		message := fmt.Sprintf("[%s](%s) 已经累计连续%d次更新失败，暂时停止更新", source.Title, source.Link, config.ErrorThreshold)
+		message := fmt.Sprintf("[%s](%s) 已經累計連續%d次更新失敗，暫時停止更新", source.Title, source.Link, config.ErrorThreshold)
 		u.ID = sub.UserID
 		_, _ = B.Send(
 			&u, message, &tb.SendOptions{
