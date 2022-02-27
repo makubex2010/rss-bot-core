@@ -74,7 +74,7 @@ const (
 {{.PreviewText}}
 -----------------------------
 {{- end}}{{if .EnableTelegraph}}
-{{.ContentTitle}} <a href="{{.TelegraphURL}}">Telegraph</a> | <a href="{{.RawLink}}">原文</a>
+<a href="{{.TelegraphURL}}">【預覽】</a><a href="{{.RawLink}}">{{.ContentTitle}}</a>
 {{- else }}
 <a href="{{.RawLink}}">{{.ContentTitle}}</a>
 {{- end }}
@@ -85,12 +85,21 @@ const (
 {{.PreviewText}}
 -----------------------------
 {{- end}}{{if .EnableTelegraph}}
-{{.ContentTitle}} [Telegraph]({{.TelegraphURL}}) | [原文]({{.RawLink}})
+[【預覽】]({{.TelegraphURL}})[{{.ContentTitle}}]({{.RawLink}})
 {{- else }}
 [{{.ContentTitle}}]({{.RawLink}})
 {{- end }}
 {{.Tags}}
 `
+	//defaultMessageListItemTpl = `{{if .EnableTelegraph}}
+	//[【預覽】]({{.TelegraphURL}})[{{.ContentTitle}}]({{.RawLink}}) {{- else }}
+	//[{{.ContentTitle}}]({{.RawLink}}){{- end }}`
+	defaultMessageListItemTpl = `{{if .EnableTelegraph}}
+<a href="{{.TelegraphURL}}">【預覽】</a><a href="{{.RawLink}}">{{.ContentTitle}}</a>
+{{- else }}
+<a href="{{.RawLink}}">{{.ContentTitle}}</a>
+{{- end }}`
+	
 	TestMode    RunType = "Test"
 	ReleaseMode RunType = "Release"
 )
