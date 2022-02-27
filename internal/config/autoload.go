@@ -20,7 +20,7 @@ import (
 
 func init() {
 	if isInTests() {
-		// 测试环境
+		// 測試環境
 		RunMode = TestMode
 		initTPL()
 		return
@@ -132,7 +132,7 @@ func init() {
 			SQLitePath = filepath.Join(workDir, "data.db")
 		}
 		log.Println("DB Path:", SQLitePath)
-		// 判断并创建SQLite目录
+		// 判斷並創建SQLite目錄
 		dir := path.Dir(SQLitePath)
 		_, err := os.Stat(dir)
 		if err != nil {
@@ -183,8 +183,8 @@ func (t TplData) replaceHTMLTags(s string) string {
 func validateTPL() {
 	testData := []TplData{
 		TplData{
-			"RSS 源标识 - 无预览无telegraph的消息",
-			"这是标题",
+			"RSS 源標識 - 無預覽無telegraph的消息",
+			"這是標題",
 			"https://www.github.com/",
 			"",
 			"",
@@ -192,21 +192,21 @@ func validateTPL() {
 			false,
 		},
 		TplData{
-			"RSS源标识 - 有预览无telegraph的消息",
-			"这是标题",
+			"RSS源標識 - 有預覽無telegraph的消息",
+			"這是標題",
 			"https://www.github.com/",
-			"这里是很长很长很长的消息预览字数补丁紫薯补丁紫薯补丁紫薯补丁紫薯补丁[1](123)",
+			"這裡是很長很長很長的消息預覽字數補丁紫薯補丁紫薯補丁紫薯補丁紫薯補丁[1](123)",
 			"",
-			"#标签",
+			"#標籤",
 			false,
 		},
 		TplData{
-			"RSS源标识 - 有预览有telegraph的消息",
-			"这是标题",
+			"RSS源標識 - 有預覽有telegraph的消息",
+			"這是標題",
 			"https://www.github.com/",
-			"这里是很长很长很长的消息预览字数补丁紫薯补丁紫薯补丁紫薯补丁紫薯补丁",
+			"這裡是很長很長很長的消息預覽字數補丁紫薯補丁紫薯補丁紫薯補丁紫薯補丁",
 			"https://telegra.ph/markdown-07-07",
-			"#标签1 #标签2",
+			"#標籤1 #標籤2",
 			true,
 		},
 	}
